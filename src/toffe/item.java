@@ -8,7 +8,7 @@ public class item {
 	private double price;
 	private double discount;
 	private Integer itemId;
-	private static Integer Id =0;
+	private static Integer Id =0;       //used to set the item id
 	public item(String name) {
 		this.name = name;
 	}

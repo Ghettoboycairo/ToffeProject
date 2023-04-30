@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class customer{
-	protected HashMap<String,String> customerNameToAddressLog = new HashMap<>();
-	protected HashMap<String,String> customerNameToPasswordLog = new HashMap<>();
+	protected HashMap<String,String> customerNameToAddressLog = new HashMap<>();      //holds the adresses of the customers (name to address)
+	protected HashMap<String,String> customerNameToPasswordLog = new HashMap<>();     //holds the accounts of the customers (name to password)
 	protected String userName;
 	protected String userPassword;
 	protected String userAddress;
 	protected Boolean loggedIn;
 	
- 	protected HashMap<String, String> signUp(String name, String password, String address) {
+ 	protected HashMap<String, String> signUp(String name, String password, String address) {  //creates a anew customer account
 		if(customerNameToPasswordLog.containsKey(name)!=true) {
 			customerNameToPasswordLog.put(name, password);
 			customerNameToAddressLog.put(name, address);
@@ -26,7 +26,7 @@ public class customer{
 		return customerNameToPasswordLog;
 	}
 
-	public Boolean signIn() {
+	public Boolean signIn() {                                //signs the customer in and changes the loggedIn boolean to true
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter Username: ");
 		String name = scan.next();

@@ -1,18 +1,15 @@
 package toffe;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class admin{
 	protected Boolean loggedIn = false;
-	protected HashMap<String,String> adminLog = new HashMap<>();
-//	protected String userName;
-//	protected String userPassword;
+	protected HashMap<String,String> adminLog = new HashMap<>();      //the adminLog hashmap saves the all the existing admin accounts
 	
 	admin(){ }                          //admin constructor
 	
-	protected HashMap<String, String> signUp(String name, String password) {
+	protected void signUp(String name, String password) {   //adds the new account credentials to the hashMap
 		if(adminLog.containsKey(name)!=true) {
 			adminLog.put(name, password);
 			System.out.println("Admin account created succesfuly with user name: "+ name);
@@ -23,10 +20,9 @@ public class admin{
 		else {
 			System.out.println("you messed up");
 		}
-		return adminLog;
 	}
 
-	public Boolean signIn() {
+	public void signIn() {     //checks if the given credentials exist in the hashMap and if so it changes the loggedIn boolean to true
 		Scanner scan = new Scanner(System.in);
 		System.out.println("enter username: ");
 		String name = scan.next();
@@ -42,18 +38,17 @@ public class admin{
 		else{
 			System.out.println("error logging in ");
 		}
-		return loggedIn;
 	}
 	
-	public void signOut() {
+	public void signOut() {     //this one is obvious :)
 		loggedIn = false;
 	}
 	
-	protected void addItemToCatalog(catalog c ,item i) {          //adds item to catalog
+	protected void addItemToCatalog(catalog c ,item i) {          //adds existing item to catalog
 		c.itemList.add(i);
 	}
 	
-	protected ArrayList<item> addNewItem(catalog catalog) {
+	protected void addNewItem(catalog catalog) {         //creates and adds a new item to the catalog
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
 		System.out.println("Enter Item Name: ");
@@ -66,21 +61,5 @@ public class admin{
 		String brand = scan.next();
 		item newItem = new item (name,category,brand,price);
 		addItemToCatalog(catalog , newItem);
-		return catalog.itemList;
 	}
-	
-	public static void main(String[] args) {
-		admin a1 = new admin();
-		catalog c1 = new catalog();
-		item it = new item("cola","drinks","cocacola",6.5);
-		a1.addItemToCatalog(c1, it);
-		c1.viewAllItems();
-		a1.addNewItem(c1);
-		c1.viewAllItems();
-		a1.addNewItem(c1);
-		c1.viewAllItems();
-		//System.out.print(c1.itemList);
-	}
-	
-	
 }
