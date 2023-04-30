@@ -21,7 +21,7 @@ public class admin{
 			System.out.println("account already exist");
 		}
 		else {
-			System.out.println("you fucked up");
+			System.out.println("you messed up");
 		}
 		return adminLog;
 	}
@@ -45,18 +45,17 @@ public class admin{
 		return loggedIn;
 	}
 	
-	public Boolean signOut() {
+	public void signOut() {
 		loggedIn = false;
-		return loggedIn;
 	}
 	
-	protected ArrayList<item> addItemToCatalog(catalog c ,item i) {          //adds item to catalog
+	protected void addItemToCatalog(catalog c ,item i) {          //adds item to catalog
 		c.itemList.add(i);
-		return c.itemList;
 	}
 	
 	protected ArrayList<item> addNewItem(catalog catalog) {
 		Scanner scan = new Scanner(System.in);
+		System.out.println();
 		System.out.println("Enter Item Name: ");
 		String name = scan.next();
 		System.out.println("Enter Item Price: ");
@@ -74,11 +73,14 @@ public class admin{
 		admin a1 = new admin();
 		catalog c1 = new catalog();
 		item it = new item("cola","drinks","cocacola",6.5);
-//		a1.addItemToCatalog(c1, it);
-		a1.addNewItem(c1);
+		a1.addItemToCatalog(c1, it);
 		c1.viewAllItems();
 		a1.addNewItem(c1);
 		c1.viewAllItems();
+		a1.addNewItem(c1);
+		c1.viewAllItems();
+		//System.out.print(c1.itemList);
 	}
+	
 	
 }

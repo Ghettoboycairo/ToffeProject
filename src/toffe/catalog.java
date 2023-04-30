@@ -8,10 +8,8 @@ public class catalog {
 	
 	
 	protected void viewAllItems() {    //views all the items stored in the list
-		while(index<itemList.size()) {
-			System.out.println("____________________");
-			viewItemInfo(itemList.get(index));
-			index+=1;
+		for(int i=0;i<itemList.size();i++) {
+			viewItemInfo(itemList.get(i));
 		}
 	}
 	protected void viewItemInfo(item x) {                //views certain item info

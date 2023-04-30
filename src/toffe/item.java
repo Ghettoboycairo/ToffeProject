@@ -73,8 +73,9 @@ public class item {
 	}
 	@Override
     public String toString() {
+		System.out.println("------------------------------------------------------");
         return "name: "+this.name + ", category: " + this.category +", describtion: "+this.description +" ,brand: "+this.brand+" ,price: "+this.price+
-        		", discount: "+this.discount+ ", item id: "+this.itemId;
+        		", discount: "+this.discount+ ", item id: "+this.itemId+"             ";
     }
 	
 }

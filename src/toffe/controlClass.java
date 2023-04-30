@@ -17,10 +17,10 @@ public class controlClass {               //kinda like the main method.
 				System.out.println("-Admin is logged in");
 			}
 			System.out.println("--------------------------------------------");
-			System.out.println("1- login");
-			System.out.println("2- register");
-			System.out.println("3- continue as guest");
-			System.out.println("4- exit");
+			System.out.println("1- Login");
+			System.out.println("2- Register");
+			System.out.println("3- View Catalog");
+			System.out.println("4- Exit");
 			System.out.println("--------------------------------------------");                                                         
 			String name = null;
 			String password = null;
@@ -42,6 +42,7 @@ public class controlClass {               //kinda like the main method.
 							System.out.println("3- Modify Existing Item. ");
 							System.out.println("4- Add Item To Catalog. ");
 							System.out.println("5- Remove Item From Catalog. ");
+							System.out.println("6- LogOut. ");
 							System.out.println("--------------------------------------------");
 							
 							int choice3 = scan.nextInt();
@@ -87,6 +88,8 @@ public class controlClass {               //kinda like the main method.
 						a1.signUp(name,password);
 					}
 					break;
+				case 3:
+					c1.viewAllItems();
 				case 4:
 					exit=true;
 					scan.close();
@@ -101,15 +104,4 @@ public class controlClass {               //kinda like the main method.
 //item toffe = new item("toffe","sweets","juhayna",12.5);
 //item cola = new item("cola","drinks","cola",6);
 //item pepsi = new item("pepsi","drinks","cola",6);
-//
-//catalog c1 = new catalog();
-//admin a1 = new admin("admin","admin");
-//a1.addItemToCatalog(c1, toffe);
-//a1.addItemToCatalog(c1, cola);
-//a1.addItemToCatalog(c1, pepsi);
-//
-////c1.viewItemInfo(pepsi);
-////c1.viewItemInfo(toffe);
-////c1.viewItemInfo(cola);
-//
-//c1.viewAllItems(c1.itemList);
+
