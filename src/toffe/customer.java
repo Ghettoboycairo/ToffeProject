@@ -11,8 +11,14 @@ public class customer{
 	protected String userAddress;
 	protected Boolean loggedIn;
 	
- 	protected HashMap<String, String> signUp(String name, String password, String address) {  //creates a anew customer account
-		if(customerNameToPasswordLog.containsKey(name)!=true) {
+ 	protected void signUp() {  //creates a a new customer account
+ 		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter Username: ");
+		String name = scan.next();
+		System.out.println("Enter Password: ");
+		String password = scan.next();
+		String address = scan.next();
+ 		if(customerNameToPasswordLog.containsKey(name)!=true) {
 			customerNameToPasswordLog.put(name, password);
 			customerNameToAddressLog.put(name, address);
 			System.out.println("Customer account created succesfuly with user name: "+ name);
@@ -21,12 +27,11 @@ public class customer{
 			System.out.println("account already exist");
 		}
 		else {
-			System.out.println("you fucked up");
+			System.out.println("you messed up");
 		}
-		return customerNameToPasswordLog;
 	}
 
-	public Boolean signIn() {                                //signs the customer in and changes the loggedIn boolean to true
+	public void signIn() {                                //signs the customer in and changes the loggedIn boolean to true
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter Username: ");
 		String name = scan.next();
@@ -42,7 +47,6 @@ public class customer{
 		else{
 			System.out.println("Error Logging In ");
 		}
-		return loggedIn;
 	}
 
 

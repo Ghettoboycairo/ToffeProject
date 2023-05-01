@@ -2,10 +2,10 @@ package toffe;
 
 import java.util.Scanner;
 
-public class controlClass {               //kinda like the main method.
+public class controlClass {               //kind of like the main method.
 	private static Boolean exit = false;
-	catalog c1 = new catalog();
-	admin a1 = new admin();
+//	catalog c1 = new catalog();
+//	admin a1 = new admin();
 	
 	
 	public static void main(String[] args) {
@@ -62,13 +62,20 @@ public class controlClass {               //kinda like the main method.
 							else if(choice3==5) {     //removes item from the catalog
 								c1.viewAllItems();
 								System.out.println("enter the name of the item you want to remove: ");
-								String remove = scan.nextLine();
-								c1.itemList.remove(remove);
+								String removeItem = scan.next();
+								for(int i=0;i<c1.itemList.size();i++) {
+									String temp = c1.itemList.get(i).getName();
+									if(temp.equals(removeItem)) {
+										c1.itemList.remove(i);
+										System.out.println("Removed Item Successfully");
+									}
+								}
 							}
 							else if(choice ==6) {   //changes the admin class loggedIn boolean to false which closes the admin menu 
 								a1.signOut();
 								break;
-							}else{
+							}
+							else{
 								System.out.println("Enter A Valid Number. ");
 							}
 						}
@@ -76,20 +83,23 @@ public class controlClass {               //kinda like the main method.
 					break;
 				case 2:                             //case 2 for registration 
 					System.out.println("--------------------------------------------");  
-					System.out.println("1- as admin");             // signUp as an admin or as a customer
+					System.out.println("1- as admin");             
 					System.out.println("2- as a customer");
 					System.out.println("--------------------------------------------"); 
 					int choice2= scan.nextInt();
-					if(choice2==1) {
+					if(choice2==1) {               //choice 1 for register as admin
 						System.out.println("choose a username: ");
 						name = scan.next();
 						System.out.println("choose a password: ");
 						password = scan.next();
 						a1.signUp(name,password);  // adds the chosen new account credentials to the admin class hashmap
 					}
+//					else if(choice2==2) {
+//						
+//					}
 					break;
-				case 3:
-					c1.viewAllItems();      //case 3 for viewing all the catalog
+				case 3:                     //case 3 for viewing all the catalog
+					c1.viewAllItems();      
 				case 4:                     //case 4 for exiting the program
 					exit=true;
 					scan.close();
