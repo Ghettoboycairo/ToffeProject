@@ -31,21 +31,10 @@ public class customer{
 		}
 	}
 
-	public void signIn() {                                //signs the customer in and changes the loggedIn boolean to true
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter Username: ");
-		String name = scan.next();
-		System.out.println("Enter Password: ");
-		String password = scan.next();
-		if(customerNameToPasswordLog.get(name)==null) {
-			System.out.println("Account don't exist ");
-		}
-		else if(customerNameToPasswordLog.get(name).equals(password)) {
+	public void signIn(String name,String password) {                                //signs the customer in and changes the loggedIn boolean to true
+		if(customerNameToPasswordLog.get(name).equals(password)) {
 			loggedIn=true;
 			System.out.println(name+" Logged In As A Customer.");
-		}
-		else{
-			System.out.println("Error Logging In ");
 		}
 	}
 
