@@ -10,25 +10,27 @@ public class controlClass {               //kind of like the main method.
 	
 	public static void main(String[] args) {
 		catalog c1 = new catalog();            //creating an instance of the class catalog and called it c1
-		customer customers = new customer();
+		customer customers = new customer();   //creating an instance of the customers class
 		admin a1 = new admin();				   //creating an instance of the admin class and called it a1
-		category toffe = new category("toffe",c1);
+		
+		category toffe = new category("Toffe",c1);      //dummies (2 categories toffe and drinks, 2 items pepsi and jellycola for categories drinks and toffe)   
+		category drinks = new category("Drinks",c1);
+		item pepsi = new item("pepsi", "drinks","cocaCola" , 6.5);
+		item jellyCola = new item("jellyCola", "toffe","jellyColaInc" , 4);
+		a1.addItemToCategory(drinks, pepsi);
+		a1.addItemToCategory(toffe, jellyCola);
 		
 		while(exit!=true) {
-			if(a1.loggedIn==true) {
-				System.out.println("-Admin is logged in");        //will be printed after you create an admin account and signIn with that account
-			}
 			System.out.println("--------------------------------------------");    //first menu
 			System.out.println("1- Login");
 			System.out.println("2- Register");
-			System.out.println("3- View All The Catalog");
-			System.out.println("4- Search For Item");
+			System.out.println("3- Browse The Catalog");
+			System.out.println("4- Search For An Item");
 			System.out.println("5- Exit");
 			System.out.println("--------------------------------------------");                                                         
-			String name = null;
-			String password = null;
 			Scanner scan = new Scanner(System.in);
 			int choice = scan.nextInt();
+			
 			switch(choice) {
 				
 				case 1:                                   //case 1 for login will check the hashmaps of the admin or the customer
@@ -37,8 +39,8 @@ public class controlClass {               //kind of like the main method.
 					System.out.println("2- as a customer");
 					System.out.println("--------------------------------------------");              
 					int choice11 = scan.nextInt();
-					if(choice11==1) {
-						a1.signIn();                      //admin class method to check if the credentials given innit exist in the admin accounts hashmap
+					if(choice11==1) {    //choice 1 for login as admin
+						a1.signIn();             //admin class method to check if the credentials given innit exist in the admin accounts hashmap
 						while(a1.loggedIn==true) {  //if so it will change the admin class boolean logged in to true so the admin control menu will be shown
 							System.out.println("--------------------------------------------");
 							System.out.println("1- View All Categories. ");
@@ -55,7 +57,7 @@ public class controlClass {               //kind of like the main method.
 							
 							if(choice3==1) {          //prints out all categories
 								c1.viewAllCategories();
-//								System.out.println("Choose an option");
+///								System.out.println("Choose an option");
 							}
 							else if(choice3==2) {
 								a1.addNewItem(c1);	 //adds a new item to the catalog
@@ -99,6 +101,9 @@ public class controlClass {               //kind of like the main method.
 							}
 						}
 					}
+					else if(choice11==2) { //choice 2 for login as customer
+						
+					}
 					break;
 				
 				case 2:                             //case 2 for registration 
@@ -106,9 +111,25 @@ public class controlClass {               //kind of like the main method.
 					break;
 				
 				case 3:                     //case 3 for viewing all the catalog
-					c1.viewAllItems();    
+					System.out.println("1- View All Items");
+					System.out.println("2- View By Category");
+					int choice4 = scan.nextInt();
+					if(choice4==1) {
+						c1.viewAllItems();
+					}
+					else if (choice4==2) {
+						c1.viewAllCategories();
+						System.out.println("Choose A Category To View:");
+						int choice5 =  scan.nextInt();
+						c1.categoryList.get(choice5-1).viewAllCategoryItems();;
+					}
 					break;
-				case 4: 
+					
+				case 4:                    //case 4 for searching for an item through the whole catalog (all the categories) 
+					System.out.println("Enter The Name Of The Item You Want To Search For: ");
+					String name = scan.next();
+					c1.getItem(name);
+					break;
 					
 				case 5:                     //case 5 for exiting the program
 					exit=true;

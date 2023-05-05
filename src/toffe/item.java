@@ -21,33 +21,26 @@ public class item {
 		Id++;
 	}
 	
-	private String setName(String n) {
+	private void setName(String n) {
 		this.name= n ;
-		return name;
 	}
-	private String setCategory(String n) {
+	private void setCategory(String n) {
 		this.category= n ;
-		return category;
 	}
-	private String setdescription(String n) {
+	private void setdescription(String n) {
 		this.description= n ;
-		return description;
 	}
-	private String setBrand(String b) {
+	private void setBrand(String b) {
 		this.brand = b;
-		return brand;
 	}
-	private double setPrice(float p) {
+	private void setPrice(float p) {
 		this.price= p;
-		return price;
 	}
-	private double setDiscount(double d) {
+	private void setDiscount(double d) {
 		this.discount= d;
-		return discount;
 	}
-	private Integer setId(int i) {
+	private void setId(int i) {
 		this.itemId = i;
-		return itemId;
 	}
 
 	public String getName() {
@@ -69,7 +62,7 @@ public class item {
 		return this.discount;
 	}
 	public Integer getItemId() {
-		return itemId;
+		return this.itemId;
 	}
 	@Override
     public String toString() {

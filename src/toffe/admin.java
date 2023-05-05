@@ -32,9 +32,9 @@ public class admin{
 
 	public void signIn() {     //checks if the given credentials exist in the hashMap and if so it changes the loggedIn boolean to true
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Choose A Username: ");
+		System.out.println("Enter Your Username: ");
 		String name = scan.next();
-		System.out.println("Choose A Password: ");
+		System.out.println("Enter Your Password: ");
 		String password = scan.next();
 		if(adminLog.get(name).equals(password)) {
 			loggedIn=true;
