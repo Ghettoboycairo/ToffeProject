@@ -67,8 +67,8 @@ public class item {
 	@Override
     public String toString() {
 		System.out.println("------------------------------------------------------");
-        return "name: "+this.name + ", category: " + this.category +", describtion: "+this.description +" ,brand: "+this.brand+" ,price: "+this.price+
-        		", discount: "+this.discount+ ", item id: "+this.itemId+"             ";
+        return "Name: "+this.name + " - Category: " + this.category +" - Describtion: "+this.description +" - Brand: "+this.brand+" - Price: "+this.price+
+        		" - Discount: "+this.discount+ " - Item Id: "+this.itemId+"       ";
     }
 	
 }

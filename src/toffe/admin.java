@@ -7,9 +7,9 @@ public class admin{
 	protected Boolean loggedIn = false;
 	protected HashMap<String,String> adminLog = new HashMap<>();      //the adminLog hashmap saves the all the existing admin accounts
 	
-	admin(){
+	admin(){                    //admin constructor
 		adminLog.put("admin", "admin");
-	}                          //admin constructor
+	}                          
 	
 	protected void signUp() {   //adds the new account credentials to the hashMap
 		Scanner scan = new Scanner(System.in);
@@ -39,6 +39,9 @@ public class admin{
 		if(adminLog.get(name).equals(password)) {
 			loggedIn=true;
 			System.out.println(name+" logged in as Admin.");
+		}
+		else {
+			System.out.println("Account Don't exist");
 		}
 	}
 	

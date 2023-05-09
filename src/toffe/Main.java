@@ -2,7 +2,7 @@ package toffe;
 
 import java.util.Scanner;
 
-public class controlClass {               //kind of like the main method.
+public class Main {               //kind of like the main method.
 	private static Boolean exit = false;
 //	catalog c1 = new catalog();
 //	admin a1 = new admin();
@@ -101,7 +101,7 @@ public class controlClass {               //kind of like the main method.
 							}
 						}
 					}
-					else if(choice11==2) { //choice 2 for login as customer
+					else if(choice11==2) { //choice 2 for login as a customer
 						
 					}
 					break;
