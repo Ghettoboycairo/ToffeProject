@@ -26,9 +26,7 @@ public class Main {
 					else if(customerManager.loggedIn==true) {
 						handleCustomerMenu();
 					}
-					else {
-						break;
-					}
+					break;
 				case 2:     				//case 2 for registration 
 					customerManager.signUp();
 					break;
@@ -43,6 +41,9 @@ public class Main {
 				case 5:                     //case 5 for exiting the program
 					exit=true;
 					scan.close();
+					break;
+				default:
+					System.out.println("Invalid Choice.");
 					break;
 			}
 		}		
@@ -83,8 +84,8 @@ public class Main {
 		System.out.println("5- LogOut. ");
 	}
 	private static int getUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
+        Scanner scan = new Scanner(System.in);
+        return scan.nextInt();
     }
 	private static void createDummyData() {
 		Category toffe = new Category("Toffe",catalog);      //dummies (2 categories toffe and drinks, 2 items pepsi and jellycola for categories drinks and toffe)   
@@ -119,30 +120,30 @@ public class Main {
             adminMenu();
             int choice = getUserInput();
             switch (choice) {
-                case 1:
+                case 1:                          //for viewing all the categories
                     catalog.viewAllCategories();
                     break;
-                case 2:
-                    adminManager.addNewItem(catalog);
+                case 2:                          //for adding a new item
+                    adminManager.addNewItem(catalog); 
                     break;
-                case 3:
-                	adminManager.addNewCategory(catalog);
+                case 3:                          //for adding a new category 
+                	adminManager.addNewCategory(catalog); 
                     break;
-                case 4:
-                    // Modify existing item
+                case 4:                         //for modifying item
+                    modifyItem();
                     break;
                 case 5:
                     adminManager.addNewItem(catalog);  // Add item to catalog
                     break;
-                case 6:
+                case 6:                     //for removing item
                     catalog.viewAllItems();
-                    catalog.removeItem();
+                    catalog.removeItemById();
                     break;
                 case 7:
-                    adminManager.signUp();
+                    adminManager.signUp();   //for adding new admin account
                     break;
                 case 8:
-                    adminManager.signOut();
+                    adminManager.signOut();  //for exiting the addmin menu
                     break;
                 default:
                     System.out.println("Enter a valid choice.");
@@ -151,45 +152,48 @@ public class Main {
         }
     }
 	private static void handleCustomerMenu() {
-		 while (customerManager.loggedIn==true) {
-			 customerMenu();
-	            int choice = getUserInput();
-	            switch(choice) {
-	            	case 1:                  //for viewing all the items then making an order by Item id
-	            		System.out.println("1- View All The Items. ");
-	            		System.out.println("2- View A Certain Category. ");
-	            		int choice2 = getUserInput();
-	            		if(choice2==1) {
-	            			catalog.viewAllItems();
-	            			System.out.println("------------------------------------------------------");
-	            			System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
-	            			int choice7 = getUserInput();
-	            			CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));
-	            		}
-	            		else if(choice2==2) {
-	            			System.out.println("Choose A Category: ");
-	            			catalog.viewAllCategories();
-	            			int choice3 = getUserInput();
-	            			catalog.categoryList.get(choice3-1).viewAllCategoryItems();  //viewing all the items in a certain category
-	            			System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
-	            			int choice8 = getUserInput();
-	            			CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice8)); //adding a new item to the cart by its id
-	            		}
-	            		
-	            	case 2:
-				
-				
-				
-	            	case 3:
-	            		System.out.println("This Is User "+customerManager.userName+" Cart Items: ");
-	            		CustomerManager.customerNameToCart.get(customerManager.userName).displayItems();
-	            		System.out.println("------------------------------------------------------");
-	            	case 4:
-				
-	            	case 5:
-	            		customerManager.signOut();
-	            }
-		 }       
+	    while (customerManager.loggedIn != false) {
+	        customerMenu();
+	        int choice = getUserInput();
+	        switch (choice) {
+	            case 1: // for viewing all the items then making an order by Item id
+	                System.out.println("1- View All The Items. ");
+	                System.out.println("2- View A Certain Category. ");
+	                int choice2 = getUserInput();
+	                if (choice2 == 1) {
+	                    catalog.viewAllItems();
+	                    System.out.println("------------------------------------------------------");
+	                    System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
+	                    int choice7 = getUserInput();
+	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));
+	                } 
+	                else if (choice2 == 2) {
+	                    System.out.println("Choose A Category: ");
+	                    catalog.viewAllCategories();
+	                    int choice3 = getUserInput();
+	                    catalog.categoryList.get(choice3 - 1).viewAllCategoryItems(); // viewing all the items in a certain category
+	                    System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
+	                    int choice8 = getUserInput();
+	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice8)); // adding a new item to the cart by its id
+	                }
+	                break;
+	            case 2:
+
+	                break;
+	            case 3:
+	                System.out.println("This Is User " + customerManager.userName + " Cart Items: ");
+	                CustomerManager.customerNameToCart.get(customerManager.userName).displayItems();
+	                System.out.println("------------------------------------------------------");
+	                break;
+	            case 4:
+
+	                break;
+	            case 5:
+	                customerManager.signOut();
+	                customerManager.loggedIn = false;
+	                break;
+	        }
+	    }
 	}
 	private static void browseCatalog() {
 		System.out.println("1- View All Items");
@@ -204,7 +208,59 @@ public class Main {
 			int choice5 =  getUserInput();
 			catalog.categoryList.get(choice5-1).viewAllCategoryItems();;
 		}
+		else {
+			System.out.println("Enter A Valid Choice");
+		}
 	}
+	private static void modifyItem() {
+	    catalog.viewAllItems();
+	    System.out.println("----------------------------------------------");
+	    System.out.println("Enter The Id Of The Item You Want To Modify");
+	    int itemId = getUserInput();
+	    boolean exit = false;
+	    while (exit == false) {
+	        System.out.println("1- Modify Name.");
+	        System.out.println("2- Modify Category.");
+	        System.out.println("3- Modify Description");
+	        System.out.println("4- Modify Brand");
+	        System.out.println("5- Modify Discount");
+	        System.out.println("6- Exit");
+	        System.out.println("-----------------------------");
+	        int choice1 = getUserInput();
+	        switch (choice1) {
+	            case 1:
+	                catalog.getItem(itemId).setName();
+	                break;
+	            case 2:
+	                catalog.getItem(itemId).setCategory();
+	                break;
+	            case 3:
+	                catalog.getItem(itemId).setDescription();
+	                break;
+	            case 4:
+	                catalog.getItem(itemId).setBrand();
+	                break;
+	            case 5:
+	                catalog.getItem(itemId).setDiscount(getUserInput());
+	                break;
+	            case 6:
+	                exit = true;
+	                break;
+	            default:
+	                System.out.println("Enter a valid choice.");
+	                break;
+	        }
+	    }
+	}
+	private static void checkOut() {
+		customerManager.customerNameToCart.get(customerManager.userName).displayItems();
+		System.out.println("Are You Sure You Want To Proceed With That Order? ");
+		System.out.println("");
+		Scanner scan = new Scanner(System.in);
+		
+		
+	}
+
 
 }
 

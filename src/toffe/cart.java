@@ -1,6 +1,7 @@
 package toffe;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Cart{
 	protected ArrayList<Item> orderedItems;    //holds the items in the Cart
@@ -28,9 +29,13 @@ class Cart{
 			System.out.println(previousOrders.get(i));
 		}
 	}
-	public void checkOut() {
-		displayItems();
-		
-	}
+//	public void checkOut() {
+//		displayItems();
+//		System.out.println("Are You Sure You Want To Proceed With That Order? ");
+//		System.out.println("");
+//		Scanner scan = new Scanner(System.in);
+//		
+//		
+//	}
 	
 }

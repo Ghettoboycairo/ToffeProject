@@ -1,5 +1,6 @@
 package toffe;
 
+import java.util.Scanner;
 
 public class Item {
 	private String name;
@@ -22,26 +23,38 @@ public class Item {
 		Id++;
 	}
 	
-	private void setName(String n) {
+	protected void setName() {
+		Scanner scan= new Scanner(System.in); 
+		String n = scan.next();
 		this.name= n ;
 	}
-	private void setCategory(String n) {
+	protected void setCategory() {
+		Scanner scan= new Scanner(System.in); 
+		String n = scan.next();
 		this.category= n ;
 	}
-	private void setdescription(String n) {
+	protected void setDescription() {
+		Scanner scan= new Scanner(System.in); 
+		String n = scan.next();
 		this.description= n ;
 	}
-	private void setBrand(String b) {
-		this.brand = b;
+	protected void setBrand() {
+		Scanner scan= new Scanner(System.in);
+		String n = scan.next();
+		this.brand = n;
 	}
-	private void setPrice(float p) {
+	protected void setPrice() {
+		Scanner scan= new Scanner(System.in);
+		float p = scan.nextFloat();
 		this.price= p;
 	}
-	private void setDiscount(double d) {
+	protected void setDiscount(double d) {
+		Scanner scan= new Scanner(System.in);
+		float p = scan.nextFloat();
 		this.discount= d;
 	}
-	private void setId(int i) {
-		this.itemId = i;
+	private void setId(int Id){
+		this.itemId = Id;
 	}
 
 	public String getName() {

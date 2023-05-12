@@ -58,13 +58,15 @@ public class Catalog {
 		return theItem;
 	}
 
-	protected void removeItem() {
+	protected void removeItemById() {
+		System.out.println("---------------------------------------------");
+		System.out.println("Enter The Id Of The Item You Want To Remove: ");
 		Scanner scan = new Scanner(System.in);
-		String itemToBeRemoved = scan.next();
+		int itemToBeRemoved = scan.nextInt();
 		for(int i=0;i<this.categoryList.size();i++) {        //first loop iterates around each Category available in the Catalog
 			for(int j=0;j<this.categoryList.get(i).itemList.size();j++) {       //second loop iterates around each Item in the Category i
-				String temp = this.categoryList.get(i).itemList.get(j).getName();  //temp equals Item j in the Category i
-				if(temp.equals(itemToBeRemoved)) {   //remove the Item if Item j in Category i equals the Item we want to remove								
+				int temp = this.categoryList.get(i).itemList.get(j).getItemId();  //temp equals Item j in the Category i
+				if(temp==itemToBeRemoved){   //remove the Item if Item j in Category i equals the Item we want to remove								
 					this.categoryList.get(i).itemList.remove(j);
 					System.out.println("Removed Item Successfully");
 			

@@ -76,6 +76,6 @@ public class CustomerManager{
 		loggedIn = false;
 		userName = null;
 	}
-
+	
 
 }
