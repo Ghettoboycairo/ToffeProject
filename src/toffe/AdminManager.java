@@ -3,11 +3,11 @@ package toffe;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class admin{
+public class AdminManager{
 	protected Boolean loggedIn = false;
-	protected HashMap<String,String> adminLog = new HashMap<>();      //the adminLog hashmap saves the all the existing admin accounts
+	protected HashMap<String,String> adminLog = new HashMap<>();      //the adminLog hashmap saves the all the existing AdminManager accounts
 	
-	admin(){                    //admin constructor
+	AdminManager(){                    //AdminManager constructor
 		adminLog.put("admin", "admin");
 	}                          
 	
@@ -49,12 +49,12 @@ public class admin{
 		loggedIn = false;
 	}
 	
-	protected void addItemToCategory(category c ,item i) {          //adds existing item to catalog
+	protected void addItemToCategory(Category c ,Item i) {          //adds existing Item to Catalog
 		c.itemList.add(i);
 	}
 	
-	protected void addNewItem(catalog catalog) {         //creates and adds a new item to the catalog
-		catalog.viewAllCategories();;
+	protected void addNewItem(Catalog Catalog) {         //creates and adds a new Item to the Catalog
+		Catalog.viewAllCategories();;
 		System.out.println("Choose A Category For Your Item: ");
 		Scanner scan = new Scanner(System.in);
 		System.out.println();
@@ -68,7 +68,14 @@ public class admin{
 		String category = scan.next();
 		System.out.println("Enter Item Brand: ");
 		String brand = scan.next();
-		item newItem = new item (name,category,brand,price);
-		addItemToCategory(catalog.categoryList.get(i) , newItem);
+		Item newItem = new Item (name,category,brand,price);
+		addItemToCategory(Catalog.categoryList.get(i) , newItem);
 	}
+	
+	protected void addNewCategory(Catalog c) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter A Name For The New Category: ");
+		String name = scan.next();
+		new Category(name,c);
+	}	
 }

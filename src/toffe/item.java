@@ -1,6 +1,7 @@
 package toffe;
 
-public class item {
+
+public class Item {
 	private String name;
 	private String category;
 	private String description;
@@ -8,11 +9,11 @@ public class item {
 	private double price;
 	private double discount;
 	private Integer itemId;
-	private static Integer Id =0;       //used to set the item id
-	public item(String name) {
+	private static Integer Id =0;       //used to set the Item id
+	public Item(String name) {
 		this.name = name;
 	}
-	public item(String name, String category, String brand, double price) {
+	public Item(String name, String category, String brand, double price) {
 		this.name = name;
 		this.category = category;
 		this.price = price;
