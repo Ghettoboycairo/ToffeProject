@@ -9,7 +9,7 @@ class Cart{
 	
 	
 	
-	public Cart() {
+	public Cart() {       //cart constructor will be called every time a new customer is registering
         orderedItems = new ArrayList<>();
     }
 	public void addItem(Item Item) {
@@ -24,7 +24,7 @@ class Cart{
             System.out.println(orderedItems.get(i));
         }
     }
-	public void displayPreviousOrders() {
+	public void displayPreviousOrders() {   //not working yet
 		for(int i = 0 ;i < previousOrders.size(); i++) {
 			System.out.println(previousOrders.get(i));
 		}

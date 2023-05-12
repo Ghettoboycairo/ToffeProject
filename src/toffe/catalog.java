@@ -37,7 +37,7 @@ public class Catalog {
 		}
 		
 	}
-	protected Item getItem(int id) {
+	protected Item getItem(int id) {     //for searching for an Item by its Id
 		boolean itemFound = false;
 		Item theItem = null;
 		for(int i=0;i<categoryList.size();i++) {   // loops through each Category 
@@ -58,7 +58,7 @@ public class Catalog {
 		return theItem;
 	}
 
-	protected void removeItemById() {
+	protected void removeItemById() {   ////for removing an Item by its Id
 		System.out.println("---------------------------------------------");
 		System.out.println("Enter The Id Of The Item You Want To Remove: ");
 		Scanner scan = new Scanner(System.in);

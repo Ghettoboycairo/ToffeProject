@@ -95,7 +95,7 @@ public class Main {
 		adminManager.addItemToCategory(drinks, pepsi);
 		adminManager.addItemToCategory(toffe, jellyCola);
 	}
-	private static void handleLogin() {
+	private static void handleLogin() {    //handling login for either the customer or the admin  (the default admin account credentials are (admin,admin) more admin accounts can be created from the admin menu 
         System.out.println("--------------------------------------------");
         System.out.println("1- Login as Admin");
         System.out.println("2- Login as Customer");
@@ -115,7 +115,7 @@ public class Main {
                 break;
         }
     }
-	private static void handleAdminMenu() {
+	private static void handleAdminMenu() {   //for viewing and handling the admin control menu (will operate only if an admin is logged in)
         while (adminManager.loggedIn==true) {
             adminMenu();
             int choice = getUserInput();
@@ -132,18 +132,18 @@ public class Main {
                 case 4:                         //for modifying item
                     modifyItem();
                     break;
-                case 5:
-                    adminManager.addNewItem(catalog);  // Add item to catalog
+                case 5:							// Add item to catalog
+                    adminManager.addNewItem(catalog);  
                     break;
-                case 6:                     //for removing item
+                case 6:                         //for removing item
                     catalog.viewAllItems();
                     catalog.removeItemById();
                     break;
-                case 7:
-                    adminManager.signUp();   //for adding new admin account
+                case 7:						    //for adding new admin account
+                    adminManager.signUp();   
                     break;
-                case 8:
-                    adminManager.signOut();  //for exiting the addmin menu
+                case 8:							//for exiting the addmin menu
+                    adminManager.signOut();  
                     break;
                 default:
                     System.out.println("Enter a valid choice.");
@@ -151,23 +151,23 @@ public class Main {
             }
         }
     }
-	private static void handleCustomerMenu() {
+	private static void handleCustomerMenu() {    //for viewing and handling the customer control menu (will operate only if a customer is logged in)
 	    while (customerManager.loggedIn != false) {
 	        customerMenu();
 	        int choice = getUserInput();
 	        switch (choice) {
-	            case 1: // for viewing all the items then making an order by Item id
+	            case 1:                                      // for viewing the catalog two options are available
 	                System.out.println("1- View All The Items. ");
 	                System.out.println("2- View A Certain Category. ");
 	                int choice2 = getUserInput();
-	                if (choice2 == 1) {
+	                if (choice2 == 1) {						// for viewing all the items then making an order by Item id
 	                    catalog.viewAllItems();
 	                    System.out.println("------------------------------------------------------");
 	                    System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
 	                    int choice7 = getUserInput();
 	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));
 	                } 
-	                else if (choice2 == 2) {
+	                else if (choice2 == 2) {				 // for viewing all the items by category then making an order by Item id
 	                    System.out.println("Choose A Category: ");
 	                    catalog.viewAllCategories();
 	                    int choice3 = getUserInput();
@@ -177,25 +177,25 @@ public class Main {
 	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice8)); // adding a new item to the cart by its id
 	                }
 	                break;
-	            case 2:
+	            case 2:            //for viewing the previous order
 
 	                break;
-	            case 3:
+	            case 3:				//for viewing the current customer cart
 	                System.out.println("This Is User " + customerManager.userName + " Cart Items: ");
 	                CustomerManager.customerNameToCart.get(customerManager.userName).displayItems();
 	                System.out.println("------------------------------------------------------");
 	                break;
-	            case 4:
+	            case 4:				//for checking out
 
 	                break;
-	            case 5:
+	            case 5:            //for signing out and terminating the customer menu
 	                customerManager.signOut();
 	                customerManager.loggedIn = false;
 	                break;
 	        }
 	    }
 	}
-	private static void browseCatalog() {
+	private static void browseCatalog() {     //two different ways of viewing the catalog (will add a search option later)
 		System.out.println("1- View All Items");
 		System.out.println("2- View By Category");
 		int choice4 = getUserInput();
@@ -212,7 +212,7 @@ public class Main {
 			System.out.println("Enter A Valid Choice");
 		}
 	}
-	private static void modifyItem() {
+	private static void modifyItem() {     //a function made for the admin to view all the items, choosing an item to modify and changing item's attributes 
 	    catalog.viewAllItems();
 	    System.out.println("----------------------------------------------");
 	    System.out.println("Enter The Id Of The Item You Want To Modify");
@@ -252,14 +252,14 @@ public class Main {
 	        }
 	    }
 	}
-	private static void checkOut() {
-		customerManager.customerNameToCart.get(customerManager.userName).displayItems();
-		System.out.println("Are You Sure You Want To Proceed With That Order? ");
-		System.out.println("");
-		Scanner scan = new Scanner(System.in);
-		
-		
-	}
+//	private static void checkOut() {   //still working on this one
+//		customerManager.customerNameToCart.get(customerManager.userName).displayItems();
+//		System.out.println("Are You Sure You Want To Proceed With That Order? ");
+//		System.out.println("");
+//		Scanner scan = new Scanner(System.in);
+//		
+//		
+//	}
 
 
 }
