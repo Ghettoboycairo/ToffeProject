@@ -146,7 +146,7 @@ public class Main {
                     adminManager.signUp();   
                     break;
                 case 8:
-//                	order.viewAllOrders();
+                	Order.viewAllOrders();
                 	break;
                 case 9:							//for exiting the addmin menu
                     adminManager.signOut();  
