@@ -10,7 +10,7 @@ public class CustomerManager{
 	protected static HashMap<String,String> customerNameToPasswordLog = new HashMap<>();     //holds the accounts of the customers (name to password)
 	protected static HashMap<String,String> customerNameToEmail = new HashMap<>();      //holds the emails of the customers (name to email)
 	protected static HashMap<String,Cart> customerNameToCart = new HashMap<>();         //holds a unique Cart for each unique username in the map 
-	protected static HashMap<String,ArrayList<Orders>> customerNameToPreviousOrders = new HashMap<>();  //holds an array of previous orders
+	protected static HashMap<String,ArrayList<Order>> customerNameToPreviousOrders = new HashMap<>();  //holds an array of previous orders
 
 	
 	protected String userName;
@@ -37,9 +37,9 @@ public class CustomerManager{
 			customerNameToPasswordLog.put(name, password);
 			customerNameToAddressLog.put(name, address);
 			customerNameToEmail.put(name, email);
-			Cart newcart = new Cart();
-			customerNameToCart.put(name, newcart);
-			ArrayList<Orders> newOrderHistory = new ArrayList<>();
+//			Cart newcart = new Cart(name);
+			customerNameToCart.put(name, new Cart(name));
+			ArrayList<Order> newOrderHistory = new ArrayList<>();
 			customerNameToPreviousOrders.put(name, newOrderHistory);
 			System.out.println("Customer account created succesfuly with user name: "+ name);
 		}
@@ -61,6 +61,7 @@ public class CustomerManager{
 			if(customerNameToPasswordLog.get(name).equals(password)) {
 				userName = name;
 				loggedIn=true;
+				System.out.println("---------------------------------------");
 				System.out.println(name+" Logged In As A Customer.");
 			}
 			else {

@@ -8,7 +8,7 @@ public class Main {
 	private static Catalog catalog = new Catalog();
 	private static CustomerManager customerManager = new CustomerManager(); 
 	private static AdminManager adminManager = new AdminManager();				   
-	
+	private Order order = new Order(customerManager);
 	
 	public static void main(String[] args) {
 		initializeSystem();
@@ -72,7 +72,8 @@ public class Main {
 		System.out.println("5- Add Item To Catalog. ");
 		System.out.println("6- Remove Item From Catalog. ");
 		System.out.println("7- Add A New Admin Account. ");
-		System.out.println("8- LogOut. ");
+		System.out.println("8- View All Orders. ");
+		System.out.println("9- LogOut. ");
 		System.out.println("--------------------------------------------");
 		
 	}
@@ -88,12 +89,14 @@ public class Main {
         return scan.nextInt();
     }
 	private static void createDummyData() {
-		Category toffe = new Category("Toffe",catalog);      //dummies (2 categories toffe and drinks, 2 items pepsi and jellycola for categories drinks and toffe)   
-		Category drinks = new Category("Drinks",catalog);
-		Item pepsi = new Item("pepsi", "drinks","cocaCola" , 6.5);
-		Item jellyCola = new Item("jellyCola", "toffe","jellyColaInc" , 4);
-		adminManager.addItemToCategory(drinks, pepsi);
-		adminManager.addItemToCategory(toffe, jellyCola);
+		Category Toffe = new Category("Toffe",catalog);      //dummies (2 categories toffe and drinks, 2 items pepsi and jellycola for categories drinks and toffe)   
+		Category Drinks = new Category("Drinks",catalog);
+		Item pepsi = new Item("pepsi", "Drinks","cocaCola" , 6.5);
+		Item jellyCola = new Item("jellyCola", "Toffe","jellyColaInc" , 4);
+		Item toffe = new Item("toffe", "Toffe","ToffeMiddleEastInc" , 40);
+		adminManager.addItemToCategory(Drinks, pepsi);
+		adminManager.addItemToCategory(Toffe, jellyCola);
+		adminManager.addItemToCategory(Toffe, toffe);
 	}
 	private static void handleLogin() {    //handling login for either the customer or the admin  (the default admin account credentials are (admin,admin) more admin accounts can be created from the admin menu 
         System.out.println("--------------------------------------------");
@@ -142,7 +145,10 @@ public class Main {
                 case 7:						    //for adding new admin account
                     adminManager.signUp();   
                     break;
-                case 8:							//for exiting the addmin menu
+                case 8:
+//                	order.viewAllOrders();
+                	break;
+                case 9:							//for exiting the addmin menu
                     adminManager.signOut();  
                     break;
                 default:
@@ -181,12 +187,17 @@ public class Main {
 
 	                break;
 	            case 3:				//for viewing the current customer cart
-	                System.out.println("This Is User " + customerManager.userName + " Cart Items: ");
-	                CustomerManager.customerNameToCart.get(customerManager.userName).displayItems();
-	                System.out.println("------------------------------------------------------");
+	            	if(!CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.isEmpty()) {
+	            		System.out.println("This Is User " + customerManager.userName + " Cart Items: ");
+	                	CustomerManager.customerNameToCart.get(customerManager.userName).displayItems();
+	                	System.out.println("------------------------------------------------------");
+	            	}
+	            	else{
+	            		System.out.println("The Cart Is Empty..");
+	            	}
 	                break;
 	            case 4:				//for checking out
-
+	            	new Order(customerManager);
 	                break;
 	            case 5:            //for signing out and terminating the customer menu
 	                customerManager.signOut();
@@ -221,10 +232,11 @@ public class Main {
 	    while (exit == false) {
 	        System.out.println("1- Modify Name.");
 	        System.out.println("2- Modify Category.");
-	        System.out.println("3- Modify Description");
-	        System.out.println("4- Modify Brand");
-	        System.out.println("5- Modify Discount");
-	        System.out.println("6- Exit");
+	        System.out.println("3- Modify Description.");
+	        System.out.println("4- Modify Brand.");
+	        System.out.println("5- Modify Discount.");
+	        System.out.println("6- Modify Price.");
+	        System.out.println("7- Exit.");
 	        System.out.println("-----------------------------");
 	        int choice1 = getUserInput();
 	        switch (choice1) {
@@ -244,6 +256,8 @@ public class Main {
 	                catalog.getItem(itemId).setDiscount(getUserInput());
 	                break;
 	            case 6:
+	            	catalog.getItem(itemId).setPrice();
+	            case 7:
 	                exit = true;
 	                break;
 	            default:

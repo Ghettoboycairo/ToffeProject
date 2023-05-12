@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 class Cart{
 	protected ArrayList<Item> orderedItems;    //holds the items in the Cart
-	protected ArrayList<Orders> previousOrders; //holds previous orders
+	private String cartOwner;                //holds the name of the cart owner
 	
 	
-	
-	public Cart() {       //cart constructor will be called every time a new customer is registering
-        orderedItems = new ArrayList<>();
+	public Cart(String name) {       //cart constructor will be called every time a new customer is registering
+		cartOwner=name;
+		orderedItems = new ArrayList<>();
     }
+	
 	public void addItem(Item Item) {
 		orderedItems.add(Item);
     }
@@ -19,16 +20,23 @@ class Cart{
     	orderedItems.remove(Item);
     }
 	public void displayItems() {
-        System.out.println("Available items:");
-        for (int i = 0 ; i<orderedItems.size();i++) {
-            System.out.println(orderedItems.get(i));
-        }
-    }
-	public void displayPreviousOrders() {   //not working yet
-		for(int i = 0 ;i < previousOrders.size(); i++) {
-			System.out.println(previousOrders.get(i));
+		if(!orderedItems.isEmpty()) {
+        	System.out.println("Available items:");
+        	for (int i = 0 ; i<orderedItems.size();i++) {
+        		System.out.println(orderedItems.get(i));
+        	}
 		}
-	}
+		else {
+			System.out.println("Cart is Empty..");
+		}
+    }
+
+	
+//	public void displayPreviousOrders() {   //not working yet
+//		for(int i = 0 ;i < previousOrders.size(); i++) {
+//			System.out.println(previousOrders.get(i));
+//		}
+//	}
 //	public void checkOut() {
 //		displayItems();
 //		System.out.println("Are You Sure You Want To Proceed With That Order? ");
