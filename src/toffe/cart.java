@@ -1,7 +1,6 @@
 package toffe;
 
 import java.util.ArrayList;
-//import java.util.Scanner;
 
 class Cart{
 	protected ArrayList<Item> orderedItems;    //holds the items in the Cart
@@ -30,20 +29,4 @@ class Cart{
 			System.out.println("Cart is Empty..");
 		}
     }
-
-	
-//	public void displayPreviousOrders() {   //not working yet
-//		for(int i = 0 ;i < previousOrders.size(); i++) {
-//			System.out.println(previousOrders.get(i));
-//		}
-//	}
-//	public void checkOut() {
-//		displayItems();
-//		System.out.println("Are You Sure You Want To Proceed With That Order? ");
-//		System.out.println("");
-//		Scanner scan = new Scanner(System.in);
-//		
-//		
-//	}
-	
 }

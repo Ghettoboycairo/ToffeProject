@@ -185,7 +185,9 @@ public class Main {
 	                }
 	                break;
 	            case 2:            //for viewing the previous order
-
+	            	for(int i=0 ; i<CustomerManager.customerNameToPreviousOrders.get(customerManager.userName).size();i++) {
+	            		System.out.println(CustomerManager.customerNameToPreviousOrders.get(customerManager.userName).get(i));
+	            	}
 	                break;
 	            case 3:				//for viewing the current customer cart
 	            	if(!CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.isEmpty()) {
