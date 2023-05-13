@@ -145,7 +145,7 @@ public class Main {
                 case 7:						    //for adding new admin account
                     adminManager.signUp();   
                     break;
-                case 8:
+                case 8:                         //for viewing all orders
                 	Order.viewAllOrders();
                 	break;
                 case 9:							//for exiting the addmin menu
@@ -169,19 +169,38 @@ public class Main {
 	                if (choice2 == 1) {						// for viewing all the items then making an order by Item id
 	               		catalog.viewAllItems();
 	                   	System.out.println("------------------------------------------------------");
-//	                   	System.out.println("Enter 007 When You Finish Ordering..");
-	                   	System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
-	                   	int choice7 = getUserInput();
-	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));               
+	                   	System.out.println("Enter 007 When You Finish Ordering..");
+	                   	boolean exit = false;
+	                   	while(exit!=true) {
+	                   		System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
+	                   		int choice7 = getUserInput();
+	                   		if(choice7==007) {
+	                   			exit=true;
+	                   			break;
+	                   		}
+	                   		else{
+	                   			CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));               
+	                   		}
+	                   	}
 	                } 
 	                else if (choice2 == 2) {				 // for viewing all the items by category then making an order by Item id
 	                    System.out.println("Choose A Category: ");
 	                    catalog.viewAllCategories();
 	                    int choice3 = getUserInput();
 	                    catalog.categoryList.get(choice3 - 1).viewAllCategoryItems(); // viewing all the items in a certain category
-	                    System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
-	                    int choice8 = getUserInput();
-	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice8)); // adding a new item to the cart by its id
+	                	boolean exit = false;
+	                	System.out.println("Enter 007 When You Finish Ordering..");
+	                   	while(exit!=true) {
+	                   		System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
+	                    	int choice8 = getUserInput();
+	                    	if(choice8==007) {
+	                    		exit=true;
+	                    		break;
+	                    	}
+	                    	else {
+	                    		CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice8)); // adding a new item to the cart by its id
+	                    	}
+	                   	}	
 	                }
 	                break;
 	            case 2:            //for viewing the previous order
