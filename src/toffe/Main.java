@@ -8,7 +8,7 @@ public class Main {
 	private static Catalog catalog = new Catalog();
 	private static CustomerManager customerManager = new CustomerManager(); 
 	private static AdminManager adminManager = new AdminManager();				   
-	private Order order = new Order(customerManager);
+//	private Order order = new Order(customerManager);
 	
 	public static void main(String[] args) {
 		initializeSystem();
@@ -167,11 +167,12 @@ public class Main {
 	                System.out.println("2- View A Certain Category. ");
 	                int choice2 = getUserInput();
 	                if (choice2 == 1) {						// for viewing all the items then making an order by Item id
-	                    catalog.viewAllItems();
-	                    System.out.println("------------------------------------------------------");
-	                    System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
-	                    int choice7 = getUserInput();
-	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));
+	               		catalog.viewAllItems();
+	                   	System.out.println("------------------------------------------------------");
+//	                   	System.out.println("Enter 007 When You Finish Ordering..");
+	                   	System.out.println("Enter The Id Of The Item You Want To Add To Your Cart: ");
+	                   	int choice7 = getUserInput();
+	                    CustomerManager.customerNameToCart.get(customerManager.userName).orderedItems.add(catalog.getItem(choice7));               
 	                } 
 	                else if (choice2 == 2) {				 // for viewing all the items by category then making an order by Item id
 	                    System.out.println("Choose A Category: ");
@@ -266,16 +267,6 @@ public class Main {
 	        }
 	    }
 	}
-//	private static void checkOut() {   //still working on this one
-//		customerManager.customerNameToCart.get(customerManager.userName).displayItems();
-//		System.out.println("Are You Sure You Want To Proceed With That Order? ");
-//		System.out.println("");
-//		Scanner scan = new Scanner(System.in);
-//		
-//		
-//	}
-
-
 }
 
 

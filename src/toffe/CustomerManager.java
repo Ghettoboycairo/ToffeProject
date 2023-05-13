@@ -37,17 +37,15 @@ public class CustomerManager{
 			customerNameToPasswordLog.put(name, password);
 			customerNameToAddressLog.put(name, address);
 			customerNameToEmail.put(name, email);
-//			Cart newcart = new Cart(name);
 			customerNameToCart.put(name, new Cart(name));
-			ArrayList<Order> newOrderHistory = new ArrayList<>();
-			customerNameToPreviousOrders.put(name, newOrderHistory);
+			customerNameToPreviousOrders.put(name, new ArrayList<>());
 			System.out.println("Customer account created succesfuly with user name: "+ name);
 		}
 		else if(customerNameToPasswordLog.containsKey(name)==true) {
-			System.out.println("account already exist");
+			System.out.println("Account Already Exist");
 		}
 		else {
-			System.out.println("you messed up");
+			System.out.println("You Messed Up...");
 		}
 	}
  	
@@ -62,14 +60,14 @@ public class CustomerManager{
 				userName = name;
 				loggedIn=true;
 				System.out.println("---------------------------------------");
-				System.out.println(name+" Logged In As A Customer.");
+				System.out.println("Customer "+name+" Logged In.");
 			}
 			else {
 				System.out.println("Wrong Password.");
 			}
 		}
 		else {
-			System.out.println("Account Don't exist.");
+			System.out.println("Account Don't exist...");
 		}
 	}
 

@@ -1,20 +1,20 @@
 package toffe;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 class Cart{
 	protected ArrayList<Item> orderedItems;    //holds the items in the Cart
-	private String cartOwner;                //holds the name of the cart owner
+//	private String cartOwner;                //holds the name of the cart owner
 	
 	
 	public Cart(String name) {       //cart constructor will be called every time a new customer is registering
-		cartOwner=name;
-		orderedItems = new ArrayList<>();
+//		this.cartOwner=name;
+		this.orderedItems = new ArrayList<>();
     }
 	
 	public void addItem(Item Item) {
-		orderedItems.add(Item);
+		this.orderedItems.add(Item);
     }
 	public void removeItem(Item Item) {
     	orderedItems.remove(Item);
