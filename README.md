@@ -1,125 +1,77 @@
-the toffe system serves as an e-commerce system and implements the following features and a few more:
+- Main:
 
--viewing the catalog or searching for an item before logging in.
+  Class serves as the entry point for the system.
 
--registering a customer and login.
+  Attributes:
+    - exit: When true, it terminates the program.
+    - catalog: Static because it doesn't need to be altered.
+    - customerManager: Static because the system needs one instance to manage all the customers.
+    - adminManager: Static because the system needs one instance to manage all the admins.
 
--displaying a catalog of items loaded from inside the system and an admin can add more items and categories.
+  Functions:
+    - initializeSystem: Initializes classes (catalog, customerManager, adminManager) and creates a few dummy data such as items and categories.
+    - handleLogin: Handles the login process for both the admins and the customers.
+    - handleAdminMenu: Views the admin menu and functionalities if an admin is logged in.
+    - handleCustomerMenu: Views the customer menu and functionalities if a customer is logged in.
 
--shopping for items and adding them to cart, and making an order to be paid upon delivery in cash.
+- AdminManager:
 
--The following are describtions describing some of the attributes and functions for most of the functions:
+  Serves as a manager for all the admin accounts and holds the data structures related to the admins. The default admin credentials are (admin, admin).
 
--Main:
+  Attributes:
+    - loggedIn: Indicates if an admin is logged in.
+    - adminLog: Hashmap where the key is the admin name and the value is the admin password.
 
-class serves as the entry point for the system.
+  Functions:
+    - AdminManager: The constructor sets the default admin credentials (admin, admin).
+    - signUp: Adds the new account credentials to the hashmap.
+    - signIn: Checks if the given credentials exist in the hashmap and, if so, changes the loggedIn boolean to true.
+    - addItemToCategory: Takes a category and an item and adds the item to the category.
+    - addNewItem: Creates a new item and adds it to the chosen category.
+    - addNewCategory: Adds a new category to the system.
+    - signOut: Changes the loggedIn boolean to false.
 
-        Atributes:
-  			exit - when true it terminates the program
-  			catalog - static because it dont need to be altered
-  			customerManager - static because the system needs one instance to manage all the customers
-  			adminManager - static because the system needs one instance to manage all the admins
-        Functions:						
- 			initializeSystem - initializes classes (catalog, customerManager, adminManager) and creates a few dummy data such as items and categories
- 			handleLogin - handles the login process for both the admins and the customers
- 			handleAdminMenu - views the admin menu and functionalities if a admin is logged in
- 			handleCustomerMenu - views the customer menu and functionalities if a customer is logged in
+- Cart:
 
--AdminManager:
+  Class works as a vessel for the items of each customer. Each sign up in the CustomerManager class creates a new cart and adds it to the new customer.
 
-serves as a manager for all the admin accounts and holds the data structures related to the admin the default admin credentials is (admin,admin)
+  Functions:
+    - addItem: Adds an item to the cart.
+    - removeItem: Removes an item from the cart.
+    - displayItems: Displays all the items in the cart.
 
-         Attributes:
- 	
-                       loggedIn - to indicate if an admin is logged in
-  		        adminLog - hashmap its key is the admin name and value is the admin password
-        
-        Functions:
- 	
-                        AdminManager - the constructor puts the default admin credentials (admin,admin)
- 			signUp - adds the new account credentials to the hashMap
- 			signIn - checks if the given credentials exist in the hashMap and if so it changes the loggedIn boolean to true
- 			addItemToCategory - takes a category and an item and adds the item to the category
-  		        addNewItem - creates a new item and adds it to the chosen category
- 			addNewCategory - adds a new category to the system
- 			signOut - changes the boolean loggenIn to false
-      
--cart:
+- Catalog:
 
-class works as a vessel for the items of each customer as with each sign up in the CustomerManager class a new cart is made and added to the new customer
-   
-        Functions:
-                
-                        addItem - adds an item to the cart
-    	                removeItem - removes an item from the cart
-  		        displayItems - displays all the items in the cart
+  Serves as a list for the categories.
 
--Catalog:
+  Attributes:
+    - categoryList: A list of categories.
 
-serves as a list for the categories 
-    
-        Attributes:
-        
-  	        categoryList - is a list of categories
-        
-        Functions:			
-   	
-                viewAllCategories - views all the categories stored in the list
- 		viewAllItems - views all the items stored in each and every Category
-                getItem - for searching for an Item by its name
- 		removeItemById - for removing an Item by its Id and the overloaded version gets an item by its Id
-    
--Category:
+  Functions:
+    - viewAllCategories: Views all the categories stored in the list.
+    - viewAllItems: Views all the items stored in each category.
+    - getItem: Searches for an item by its name.
+    - removeItemById: Removes an item by its ID. (Overloaded version gets an item by its ID.)
 
-class holds all the item assigned to it
+- Category:
 
-        Attributes:
-   		
-                name - the name of the category set with the constructor call
-                itemList - a list of all the items available in this list
-        
-        Functions:
- 	
-                Category - constructor takes a name and the catalog (we only have one unique catalog in this system)
- 		viewAllCategoryItems - views all the items stored in the list of this Category
- 		getName - gets the name of this category
+  Class holds all the items assigned to it.
 
--CustomerManager:
+  Attributes:
+    - name: The name of the category set with the constructor call.
+    - itemList: A list of all the items available in this category.
 
-holds all the customer related data and manages sign up sign out and login of each customer
-        
-        Attributes:
- 		
-                customerNameToAddressLog - is a hashmap with its key as the username and its value is the address       
-                customerNameToPasswordLog - is a hashmap with its key as the username and its value is the user password
- 		customerNameToEmail - is a hashmap with its key as the username and its value is the user email
- 		customerNameToCartLog - is a hashmap with its key as the username and its value is a unique object of type cart
-                customerNameToPasswordLog - is a hashmap with its key as the username and its value is a arraylist that holds objects of type orders
- 		userName - holds the name of the customer and is set when signIn function is called and set to null when signOut is called
- 		loggedIn - to indicate if a customer is logged in 
-       
-        Functions:
-        
-                signUp - asks the user for the data required to sign him up and assigns the data to the corresponding data structures if the username entered dont already exist
- 		signIn - signs the user in if the userName exist in the logs and the entered password is correct, if so it assigns the username to the
-                userName attribute and changes the boolean logged in to true to indicate that a user is logged in.
-   		sigOut - sets the userName to null and loggedIn to false.
+  Functions:
+    - Category: Constructor takes a name and the catalog (we only have one unique catalog in this system).
+    - viewAllCategoryItems: Views all the items stored in the list of this category.
+    - getName: Gets the name of this category.
 
+- CustomerManager:
 
+  Holds all the customer-related data and manages sign up, sign out, and login of each customer.
 
--Order:
-
-class serves as an order for every time a user checks out with a cart
-
-        Attributes:
-        
- 		allOrders - holds all the previous orders made by each and every customer
- 		delieveryAddress - holds the address of the customer who made the order
- 		itemList - holds the items of the cart 
-        Functions:
- 		
-                Order - the constructor creates a new arraylist of itemList and adds to it all the cart items and adds the order to the allOrders list
- 		and adds the order to the customerNameToPreviousOrders to be saved as the customer orders history
- 		and clears the customer cart as its now an active order 			
- 		viewAllOrders - views all the orders of all the customers
- 
+  Attributes:
+    - customerNameToAddressLog: Hashmap with the key as the username and the value as the address.
+    - customerNameToPasswordLog: Hashmap with the key as the username and the value as the user password.
+    - customerNameToEmail: Hashmap with the key as the username and the value as the user email.
+    - customerNameToCartLog: Hashmap with the key as the username and the value as a unique object of type
