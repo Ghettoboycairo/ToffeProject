@@ -1,7 +1,7 @@
 the toffe system serves as an e-commerce system and implements the following features and a few more:
 -viewing the catalog or searching for an item before logging in.
 -registering a customer and login.
--displaying a catalog of items loaded from inside the system and an admin can add more items and categories,
+-displaying a catalog of items loaded from inside the system and an admin can add more items and categories.
 -shopping for items and adding them to cart, and making an order to be paid upon delivery in cash.
 
 -The following are describtions describing some of the attributes and functions for most of the functions:
