@@ -1,3 +1,16 @@
+/*Order to serve as an order for every time a user checks out with a cart
+ * Attributes:
+ * 			allOrders - holds all the previous orders made by each and every customer
+ * 			delieveryAddress - holds the address of the customer who made the order
+ * 			itemList - holds the items of the cart 
+ * Functions:
+ * 			Order - the constructor creates a new arraylist of itemList and adds to it all the cart items and adds the order to the allOrders list
+ * 			and adds the order to the customerNameToPreviousOrders to be saved as the customer orders history
+ * 			and clears the customer cart as its now an active order
+ * 			
+ * 			viewAllOrders - views all the orders of all the customers			
+ * 
+ */
 package toffe;
 
 import java.util.ArrayList;

@@ -1,3 +1,17 @@
+/*Main class serves as the entry point for the system
+ * Atributes:
+ * 			exit - when true it terminates the program
+ * 			catalog - static because it dont need to be altered
+ * 			customerManager - static because the system needs one instance to manage all the customers
+ * 			adminManager - static because the system needs one instance to manage all the admins
+ * Functions:						
+ *			initializeSystem - initializes classes (catalog, customerManager, adminManager) and creates a few dummy data such as items and categories
+ *			handleLogin - handles the login process for both the admins and the customers
+ *			handleAdminMenu - views the admin menu and functionalities if a admin is logged in
+ *			handleCustomerMenu - views the customer menu and functionalities if a customer is logged in
+ */
+
+
 package toffe;
 
 import java.util.Scanner;

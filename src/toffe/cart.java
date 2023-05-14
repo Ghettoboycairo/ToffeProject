@@ -1,14 +1,19 @@
+/*cart class works as a vessel for the items of each customer
+ * as with each sign up in the CustomerManager class a new cart is made and added to the new customer
+ * Functions:
+ * 			addItem - adds an item to the cart
+ * 			removeItem - removes an item from the cart
+ * 			displayItems - displays all the items in the cart
+*/
+
 package toffe;
 
 import java.util.ArrayList;
 
 class Cart{
 	protected ArrayList<Item> orderedItems;    //holds the items in the Cart
-//	private String cartOwner;                //holds the name of the cart owner
-	
 	
 	public Cart(String name) {       //cart constructor will be called every time a new customer is registering
-//		this.cartOwner=name;
 		this.orderedItems = new ArrayList<>();
     }
 	

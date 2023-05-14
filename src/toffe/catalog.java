@@ -1,3 +1,13 @@
+/*Catalog serves as a list for the categories 
+ *Attributes:
+ *			categoryList - is a list of categories
+ *Functions:			
+ *			viewAllCategories - views all the categories stored in the list
+ *			viewAllItems - views all the items stored in each and every Category
+ *			getItem - for searching for an Item by its name
+ *			removeItemById - for removing an Item by its Id and the overloaded version gets an item by its Id
+ */
+
 package toffe;
 
 import java.util.ArrayList;
@@ -8,18 +18,18 @@ public class Catalog {
 	protected ArrayList <Category> categoryList = new ArrayList <Category>();   //array list of categories
 	
 	
-	protected void viewAllCategories() {    //views all the categories stored in the list
+	protected void viewAllCategories() {    
 		for(int i=0;i<categoryList.size();i++) {
 			System.out.print(i+1+("- "));
 			System.out.println( categoryList.get(i).getName());
 		}
 	}
-	protected void viewAllItems() {        //views all the items stored in each and every Category
+	protected void viewAllItems() {        
 		for(int i=0;i<categoryList.size();i++) {
 			categoryList.get(i).viewAllCategoryItems();
 		}
 	}
-	protected void getItem(String name) {  //for searching for an Item by its name
+	protected void getItem(String name) {  
 		boolean itemFound = false;
 		for(int i=0;i<categoryList.size();i++) {   // loops through each Category 
 			for(int j=0;j<categoryList.get(i).itemList.size();j++) {  //loops through each Item 
@@ -37,7 +47,7 @@ public class Catalog {
 		}
 		
 	}
-	protected Item getItem(int id) {     //for searching for an Item by its Id
+	protected Item getItem(int id) {     
 		boolean itemFound = false;
 		Item theItem = null;
 		for(int i=0;i<categoryList.size();i++) {   // loops through each Category 
@@ -58,7 +68,7 @@ public class Catalog {
 		return theItem;
 	}
 
-	protected void removeItemById() {   ////for removing an Item by its Id
+	protected void removeItemById() {   
 		System.out.println("---------------------------------------------");
 		System.out.println("Enter The Id Of The Item You Want To Remove: ");
 		Scanner scan = new Scanner(System.in);
