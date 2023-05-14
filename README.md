@@ -31,7 +31,7 @@ serves as a manager for all the admin accounts and holds the data structures rel
 
          Attributes:
  	
-                        loggedIn - to indicate if an admin is logged in
+                       loggedIn - to indicate if an admin is logged in
   		        adminLog - hashmap its key is the admin name and value is the admin password
         
         Functions:
