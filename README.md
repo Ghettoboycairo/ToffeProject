@@ -11,20 +11,24 @@ the toffe system serves as an e-commerce system and implements the following fea
 -The following are describtions describing some of the attributes and functions for most of the functions:
 
 -Main:
-class serves as the entry point for the system
-    Atributes:
+
+class serves as the entry point for the system.
+
+        Atributes:
   			exit - when true it terminates the program
   			catalog - static because it dont need to be altered
   			customerManager - static because the system needs one instance to manage all the customers
   			adminManager - static because the system needs one instance to manage all the admins
-    Functions:						
+        Functions:						
  			initializeSystem - initializes classes (catalog, customerManager, adminManager) and creates a few dummy data such as items and categories
  			handleLogin - handles the login process for both the admins and the customers
  			handleAdminMenu - views the admin menu and functionalities if a admin is logged in
  			handleCustomerMenu - views the customer menu and functionalities if a customer is logged in
 
 -AdminManager:
+
 serves as a manager for all the admin accounts and holds the data structures related to the admin the default admin credentials is (admin,admin)
+
     Attributes:
  			loggedIn - to indicate if an admin is logged in
   		adminLog - hashmap its key is the admin name and value is the admin password
@@ -38,6 +42,7 @@ serves as a manager for all the admin accounts and holds the data structures rel
  			signOut - changes the boolean loggenIn to false
       
 -cart:
+
 class works as a vessel for the items of each customer as with each sign up in the CustomerManager class a new cart is made and added to the new customer
     Functions:
       addItem - adds an item to the cart
@@ -45,6 +50,7 @@ class works as a vessel for the items of each customer as with each sign up in t
   		displayItems - displays all the items in the cart
 
 -Catalog:
+
 serves as a list for the categories 
     Attributes:
   		categoryList - is a list of categories
