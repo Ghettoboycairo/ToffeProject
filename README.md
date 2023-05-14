@@ -1,3 +1,16 @@
+the toffe system serves as an e-commerce system and implements the following features and a few more:
+
+-viewing the catalog or searching for an item before logging in.
+
+-registering a customer and login.
+
+-displaying a catalog of items loaded from inside the system and an admin can add more items and categories.
+
+-shopping for items and adding them to cart, and making an order to be paid upon delivery in cash.
+
+-The following are describtions describing some of the attributes and functions for most of the functions:
+
+
 - Main:
 
   Class serves as the entry point for the system.
@@ -75,3 +88,25 @@
     - customerNameToPasswordLog: Hashmap with the key as the username and the value as the user password.
     - customerNameToEmail: Hashmap with the key as the username and the value as the user email.
     - customerNameToCartLog: Hashmap with the key as the username and the value as a unique object of type
+cart.
+    - customerNameToPasswordLog: Hashmap with the key as the username and the value as an ArrayList that holds objects of type orders.
+    - userName: Holds the name of the customer and is set when the signIn function is called. It is set to null when signOut is called.
+    - loggedIn: Indicates if a customer is logged in.
+
+  Functions:
+    - signUp: Asks the user for the data required to sign them up and assigns the data to the corresponding data structures if the username entered doesn't already exist.
+    - signIn: Signs the user in if the username exists in the logs and the entered password is correct. If so, it assigns the username to the userName attribute and changes the loggedIn boolean to true to indicate that a user is logged in.
+    - signOut: Sets the userName to null and loggedIn to false.
+
+- Order:
+
+  Class serves as an order for every time a user checks out with a cart.
+
+  Attributes:
+    - allOrders: Holds all the previous orders made by each customer.
+    - deliveryAddress: Holds the address of the customer who made the order.
+    - itemList: Holds the items of the cart.
+
+  Functions:
+    - Order: The constructor creates a new ArrayList of itemList and adds to it all the cart items. It adds the order to the allOrders list and the customerNameToPreviousOrders to be saved as the customer's order history. Finally, it clears the customer's cart as it is now an active order.
+    - viewAllOrders: Views all the orders of all the customers.    
